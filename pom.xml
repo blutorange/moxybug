@@ -25,29 +25,13 @@
 	</developers>
 
 	<properties>
-		<moxy.version>2.7.11</moxy.version>
-		<junit.version>4.13</junit.version>
-		<javalang.version>8</javalang.version>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>https://repo1.maven.org/maven2</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.12.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -58,7 +42,7 @@
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>org.eclipse.persistence.moxy</artifactId>
-			<version>${moxy.version}</version>
+			<version>2.7.15</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.json</groupId>
@@ -75,8 +59,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>${javalang.version}</source>
-					<target>${javalang.version}</target>
+					<release>11</release>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

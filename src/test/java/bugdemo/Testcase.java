@@ -1,8 +1,7 @@
 package bugdemo;
 
 import org.eclipse.persistence.jaxb.JAXBContext;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -11,6 +10,8 @@ import javax.xml.bind.Marshaller;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.StringWriter;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * This appears to be a bug in EclipseLink MOXy. When marshalling an org.w3c.dom.Element, it includes the namespace
@@ -34,8 +35,8 @@ public class Testcase
 
 		System.out.println("Includes namespace from element, but not attribute: " + sw);
 
-		Assert.assertTrue(sw.toString().contains("http://example.com/element"));
-		Assert.assertTrue(sw.toString().contains("http://example.com/attribute"));
+		assertTrue(sw.toString().contains("http://example.com/element"));
+		assertTrue(sw.toString().contains("http://example.com/attribute"));
 	}
 
 	private Document newDocument() throws ParserConfigurationException
