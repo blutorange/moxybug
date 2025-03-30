@@ -28,6 +28,8 @@ public class Testcase
 		Element x = doc.createElementNS("http://example.com/element", "x");
 		x.setAttributeNS("http://example.com/attribute", "attr", "value");
 		el.someXmlBlock = x;
+		Element y = doc.createElementNS("http://example.com/element2", "y");
+		x.appendChild(y);
 
 		StringWriter sw = new StringWriter();
 		Marshaller marshaller = getMarshaller(MyXmlAnyElementType.class);
@@ -36,6 +38,7 @@ public class Testcase
 		System.out.println("Includes namespace from element, but not attribute:\n" + sw);
 
 		assertTrue(sw.toString().contains("http://example.com/element"), "Should contain element namespace");
+		assertTrue(sw.toString().contains("http://example.com/element2"), "Should contain element2 namespace");
 		assertTrue(sw.toString().contains("http://example.com/attribute"), "Should contain attribute namespace");
 	}
 
