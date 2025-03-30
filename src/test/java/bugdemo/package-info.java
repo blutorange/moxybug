@@ -1,4 +1,4 @@
-@javax.xml.bind.annotation.XmlSchema(
+@jakarta.xml.bind.annotation.XmlSchema(
 		namespace = "urn:testcase",
-		elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+		elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package bugdemo;

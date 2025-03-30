@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.StringWriter;
@@ -33,10 +33,10 @@ public class Testcase
 		Marshaller marshaller = getMarshaller(MyXmlAnyElementType.class);
 		marshaller.marshal(el, sw);
 
-		System.out.println("Includes namespace from element, but not attribute: " + sw);
+		System.out.println("Includes namespace from element, but not attribute:\n" + sw);
 
-		assertTrue(sw.toString().contains("http://example.com/element"));
-		assertTrue(sw.toString().contains("http://example.com/attribute"));
+		assertTrue(sw.toString().contains("http://example.com/element"), "Should contain element namespace");
+		assertTrue(sw.toString().contains("http://example.com/attribute"), "Should contain attribute namespace");
 	}
 
 	private Document newDocument() throws ParserConfigurationException
@@ -51,7 +51,7 @@ public class Testcase
 
 	private Marshaller getMarshaller(Class<?> clazz) throws JAXBException
 	{
-		javax.xml.bind.JAXBContext ctx = JAXBContext.newInstance(clazz);
+		jakarta.xml.bind.JAXBContext ctx = JAXBContext.newInstance(clazz);
 		Marshaller marshaller = ctx.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		return marshaller;
